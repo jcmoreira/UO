@@ -1,0 +1,303 @@
+function FastLootRPG()
+{
+	//1 - loot all; 0 - loot prioritized items
+	var all = 0;
+
+	//1 - ignore list, 0 - do not ignore
+	var clear = 1;
+
+	//1 - use skinning
+	var useSkining = 1;
+
+	FastLoot('Loot', all, clear, useSkining);
+}
+function FastLootPVP()
+{
+
+	var all = 0;
+
+
+	var clear = 1;
+
+
+	var useSkining = 0;
+
+	FastLoot('Loot2', all, clear, useSkining);
+}
+
+function FastLoot(listName, all, clear, useSkining)
+{
+	var corpse = FindCorpse();
+
+	if (corpse == null)
+	{
+		Orion.Print('CORPS NOT FOUND!');
+		Orion.Print('CORPS NOT FOUND!');
+		Orion.Print('CORPS NOT FOUND!');
+		Orion.Ignore('corpse', false);
+	}
+	else
+	{
+		Orion.AddObject('corpse', corpse.Serial());
+		LootLag();
+		Loot(listName, all, clear, useSkining);
+	}
+}
+
+function FindCorpse()
+{
+	var list = Orion.FindType('0x2006|0x0ECA|0x0E40|0x0E41', '-1', ground, 'fast', '2');
+
+	if (list.length)
+	{
+		Orion.UseObject(list[0]);
+		return Orion.FindObject(list[0]);
+	}
+
+	return null;
+}
+
+function LootLag()
+{
+	var timer = Orion.Now() + 300;
+
+	while (!Orion.FindType('-1', '-1', 'corpse').length && timer > Orion.Now())
+		Orion.Wait(50);
+}
+
+function Loot(listName, all, clear, useSkining)
+{
+	var bag = '0x0E76';
+
+	var lootBagList = Orion.FindType(bag);
+
+	if (lootBagList.length)
+		Orion.AddObject('lootpack', lootBagList[0]);
+	else
+		Orion.AddObject('lootpack', Orion.GetSerial(backpack));
+
+	LootByFindList(listName);
+
+	if (all == 1)
+	{
+		if (clear == 1)
+			Orion.UseIgnoreList('ignoreLoot');
+		else
+			Orion.ResetIgnoreList();
+
+		LootAll();
+
+		Orion.ResetIgnoreList();
+		Orion.Ignore('corpse');
+	}
+
+	if (useSkining == 1)
+		Skining();
+}
+
+function Skining()
+{
+	Orion.WaitTargetObject('corpse');
+	Orion.UseType('0x0EC4');
+	Orion.Wait(500);
+	Orion.UseIgnoreList('ignoreLoot');
+	LootAll();
+}
+
+function LootItems(list)
+{
+	if (!list.length)
+		return false;
+
+	for (var i = 0; i < list.length; i++)
+	{
+		if (Orion.GetDistance('corpse') > 2)
+			return false;
+
+		Orion.MoveItem(list[i], 0, 'lootpack');
+		Orion.Wait(100);
+	}
+
+	return true;
+}
+
+function LootByFindList(listName)
+{
+	while (LootItems(Orion.FindList(listName, 'corpse')))
+		Orion.Wait(50);
+}
+
+function LootAll()
+{
+	while (LootItems(Orion.FindType('-1', '-1', 'corpse')))
+		Orion.Wait(50);
+}
+
+function EmptyContainer()
+{
+    Orion.Print('Select container to empty');
+    Orion.AddObject('moveFromContainer');
+    while (Orion.HaveTarget()) {
+        Orion.Wait(20);
+    }
+
+    Orion.Print('Select container to receive items');
+    Orion.AddObject('moveToContainer');
+    while (Orion.HaveTarget()) {
+        Orion.Wait(20);
+    }
+
+    var list = Orion.FindType('-1', '-1', 'moveFromContainer');
+
+    while (list.length > 0){
+         Orion.MoveItem(list[0], 0, 'moveToContainer');
+         Orion.Wait('moveitemdelay');
+         list = Orion.FindType('-1', '-1', 'moveFromContainer');
+    }
+
+}
+
+function SetOrGetContainer(containerName, containerDescription)
+{
+   var container = Orion.FindObject(containerName);
+
+   if (container == null || !container.Exists()) {
+      Orion.Print('Select container: ' + containerDescription);
+      Orion.AddObject(containerName);
+      while(Orion.HaveTarget()) {
+            Orion.Wait(20);
+      }
+      container = Orion.FindObject(containerName);
+   }
+
+   return container;
+}
+
+function OrganizeItemsFromLootBarrel(){
+
+   Orion.ResetIgnoreList();
+   Orion.IgnoreReset();
+
+   var lootBarrel = SetOrGetContainer('lootContainer', 'Unorganized Loot');
+   Orion.OpenContainer(lootBarrel.Serial());
+
+   var bagsContainer = SetOrGetContainer('bagsContainer', 'Bags Container');
+   Orion.OpenContainer(bagsContainer.Serial());
+
+   var alchemyContainer = SetOrGetContainer('alchemyContainer', 'Alchemy Items');
+   Orion.OpenContainer(alchemyContainer.Serial());
+   var reagentsContainer = SetOrGetContainer('reagentsContainer', 'Reagents Container');
+   Orion.OpenContainer(reagentsContainer.Serial());
+
+   var inscriptionContainer = SetOrGetContainer('inscriptionContainer', 'Inscription Items');
+   Orion.OpenContainer(inscriptionContainer.Serial());
+   var firstCircleScrollsContainer = SetOrGetContainer('firstCircleScrollsContainer', 'First Circle Scrolls Container');
+   Orion.OpenContainer(firstCircleScrollsContainer.Serial());
+   var secondCircleScrollsContainer = SetOrGetContainer('secondCircleScrollsContainer', 'Second Circle Scrolls Container');
+   Orion.OpenContainer(secondCircleScrollsContainer.Serial());
+   var thirdCircleScrollsContainer = SetOrGetContainer('thirdCircleScrollsContainer', 'Third Circle Scrolls Container');
+   Orion.OpenContainer(thirdCircleScrollsContainer.Serial());
+   var fourthCircleScrollsContainer = SetOrGetContainer('fourthCircleScrollsContainer', 'Fourth Circle Scrolls Container');
+   Orion.OpenContainer(fourthCircleScrollsContainer.Serial());
+   var fifthCircleScrollsContainer = SetOrGetContainer('fifthCircleScrollsContainer', 'Fifth Circle Scrolls Container');
+   Orion.OpenContainer(fifthCircleScrollsContainer.Serial());
+   var sixthCircleScrollsContainer = SetOrGetContainer('sixthCircleScrollsContainer', 'Sixth Circle Scrolls Container');
+   Orion.OpenContainer(sixthCircleScrollsContainer.Serial());
+   var seventhCircleScrollsContainer = SetOrGetContainer('seventhCircleScrollsContainer', 'Seventh Circle Scrolls Container');
+   Orion.OpenContainer(firstCircleScrollsContainer.Serial());
+   var eigthCircleScrollsContainer = SetOrGetContainer('eigthCircleScrollsContainer', 'Eigth Circle Scrolls Container');
+   Orion.OpenContainer(eigthCircleScrollsContainer.Serial());
+   var powerScrollsContainer = SetOrGetContainer('powerScrollsContainer', 'Power Scrolls Container');
+   Orion.OpenContainer(powerScrollsContainer.Serial());
+
+   var regs = '0x0F78|0x0F79|0x0F7A|0x0F7B|0x0F7C|0x0F82|0x0F84|0x0F85|0x0F86|0x0F87|0x0F88|0x0F89|0x0F8C|0x0F8D|0x0F8E|0x0F90|0x0F91';
+   var bags = '0x0E75|0x0E76';
+
+   var bagList = Orion.FindType(bags, '-1', lootBarrel.Serial());
+   Orion.Print(bagList.length + ' bags found.');
+
+   for (var i = 0; i < bagList.length; i++){
+      Orion.OpenContainer(bagList[i]);
+      Orion.Print('Emptying bag ' + (i + 1));
+	
+      var itemList = Orion.FindType('-1', '-1', bagList[i]);
+      Orion.Print(itemList.length + ' items found on bag ' + (i + 1));
+     
+      while (itemList.length > 0) {
+         Orion.MoveItem(itemList[0], 0, 'lootContainer');
+         Orion.Wait('moveitemdelay');
+         itemList = Orion.FindType('-1', '-1', bagList[i]);
+      }
+   }
+
+   while (bagList.length > 0) {
+      Orion.MoveItem(bagList[0], 0, 'bagsContainer');
+      Orion.Wait('moveitemdelay');
+      bagList = Orion.FindType(bags, '-1', lootBarrel.Serial());
+   }
+
+   var reagentsList = Orion.FindType(regs, '-1', lootBarrel.Serial())
+   while (reagentsList.length > 0) {
+      Orion.MoveItem(reagentsList[0], 0, 'reagentsContainer');
+      Orion.Wait('moveitemdelay');
+      reagentsList = Orion.FindType(regs, '-1', lootBarrel.Serial());
+   }  
+
+   var firstCircleScrollsList = Orion.FindList('firstCircleScrolls', lootBarrel.Serial())
+   while (firstCircleScrollsList.length > 0) {
+      Orion.MoveItem(firstCircleScrollsList[0], 0, 'firstCircleScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      firstCircleScrollsList = Orion.FindList('firstCircleScrolls', lootBarrel.Serial());
+   }
+   var secondCircleScrollsList = Orion.FindList('secondCircleScrolls', lootBarrel.Serial())
+   while (secondCircleScrollsList.length > 0) {
+      Orion.MoveItem(secondCircleScrollsList[0], 0, 'secondCircleScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      secondCircleScrollsList = Orion.FindList('secondCircleScrolls', lootBarrel.Serial());
+   }
+   var thirdCircleScrollsList = Orion.FindList('thirdCircleScrolls', lootBarrel.Serial())
+   while (thirdCircleScrollsList.length > 0) {
+      Orion.MoveItem(thirdCircleScrollsList[0], 0, 'thirdCircleScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      thirdCircleScrollsList = Orion.FindList('thirdCircleScrolls', lootBarrel.Serial());
+   }
+   var fourthCircleScrollsList = Orion.FindList('fourthCircleScrolls', lootBarrel.Serial())
+   while (fourthCircleScrollsList.length > 0) {
+      Orion.MoveItem(fourthCircleScrollsList[0], 0, 'fourthCircleScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      fourthCircleScrollsList = Orion.FindList('fourthCircleScrolls', lootBarrel.Serial());
+   }
+   var fifthCircleScrollsList = Orion.FindList('fifthCircleScrolls', lootBarrel.Serial())
+   while (fifthCircleScrollsList.length > 0) {
+      Orion.MoveItem(fifthCircleScrollsList[0], 0, 'fifthCircleScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      fifthCircleScrollsList = Orion.FindList('fifthCircleScrolls', lootBarrel.Serial());
+   }
+   var sixthCircleScrollsList = Orion.FindList('sixthCircleScrolls', lootBarrel.Serial())
+   while (sixthCircleScrollsList.length > 0) {
+      Orion.MoveItem(sixthCircleScrollsList[0], 0, 'sixthCircleScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      sixthCircleScrollsList = Orion.FindList('sixthCircleScrolls', lootBarrel.Serial());
+   }
+   var seventhCircleScrollsList = Orion.FindList('seventhCircleScrolls', lootBarrel.Serial())
+   while (seventhCircleScrollsList.length > 0) {
+      Orion.MoveItem(seventhCircleScrollsList[0], 0, 'seventhCircleScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      seventhCircleScrollsList = Orion.FindList('seventhCircleScrolls', lootBarrel.Serial());
+   }
+   var eigthCircleScrollsList = Orion.FindList('eigthCircleScrolls', lootBarrel.Serial())
+   while (eigthCircleScrollsList.length > 0) {
+      Orion.MoveItem(eigthCircleScrollsList[0], 0, 'eigthCircleScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      eigthCircleScrollsList = Orion.FindList('eigthCircleScrolls', lootBarrel.Serial());
+   }
+   var powerScrollsList = Orion.FindType('0x1F31', '0x084D', lootBarrel.Serial())
+   while (powerScrollsList.length > 0) {
+      Orion.MoveItem(powerScrollsList[0], 0, 'powerScrollsContainer');
+      Orion.Wait('moveitemdelay');
+      powerScrollsList = Orion.FindType('0x1F31', '0x084D', lootBarrel.Serial());
+   }
+
+}
+
+
