@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c3be8e9-5977-4cc4-be13-41638ce9a896" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webResources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,43 +15,66 @@
     <session id="-1182561724">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="MiningMinoc" value="1" />
           <entry key="py" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="5" />
+          <entry key="Python" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="1" />
-          <entry key="py" value="1197" />
+          <entry key="dummy" value="4" />
+          <entry key="py" value="2113" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="1197" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Python" value="2113" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TrainTinkering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state>
+              <caret selection-end-line="2" selection-end-column="29" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MiningMinoc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+                <marker date="1534363396646" expanded="true" signature="232:579" ph="..." />
+                <marker date="1534363396646" expanded="true" signature="598:603" ph="..." />
+                <marker date="1534363396646" expanded="true" signature="778:783" ph="..." />
+                <marker date="1534363396646" expanded="true" signature="1016:1021" ph="..." />
+                <marker date="1534363396646" expanded="true" signature="1098:1142" ph="..." />
+                <marker date="1534363396646" expanded="true" signature="1140:1141" ph="..." />
+                <marker date="1534363396646" expanded="true" signature="1159:1203" ph="..." />
+                <marker date="1534363396646" expanded="true" signature="1201:1202" ph="..." />
+                <marker date="1534363396646" expanded="true" signature="1220:1223" ph="..." />
               </folding>
             </state>
           </provider>
@@ -70,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/Constants.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="885">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
@@ -94,6 +117,7 @@
       <list>
         <option value="$PROJECT_DIR$/Constants.py" />
         <option value="$PROJECT_DIR$/TrainTinkering.py" />
+        <option value="$PROJECT_DIR$/MiningMinoc.py" />
       </list>
     </option>
   </component>
@@ -132,7 +156,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>PyPep8Inspection</id>
+            <id>PyCompatibilityInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -152,11 +176,6 @@
             <path>
               <item name="Stealth" type="b2602c69:ProjectViewProjectNode" />
               <item name="Stealth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Stealth" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stealth" type="462c0819:PsiDirectoryNode" />
-              <item name="py_stealth" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Stealth" type="b2602c69:ProjectViewProjectNode" />
@@ -201,7 +220,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18036287" />
@@ -244,7 +262,7 @@
     <entry file="file://$PROJECT_DIR$/Constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
         </state>
       </provider>
     </entry>
@@ -257,10 +275,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TrainTinkering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state>
+          <caret selection-end-line="2" selection-end-column="29" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MiningMinoc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <marker date="1534363396646" expanded="true" signature="232:579" ph="..." />
+            <marker date="1534363396646" expanded="true" signature="598:603" ph="..." />
+            <marker date="1534363396646" expanded="true" signature="778:783" ph="..." />
+            <marker date="1534363396646" expanded="true" signature="1016:1021" ph="..." />
+            <marker date="1534363396646" expanded="true" signature="1098:1142" ph="..." />
+            <marker date="1534363396646" expanded="true" signature="1140:1141" ph="..." />
+            <marker date="1534363396646" expanded="true" signature="1159:1203" ph="..." />
+            <marker date="1534363396646" expanded="true" signature="1201:1202" ph="..." />
+            <marker date="1534363396646" expanded="true" signature="1220:1223" ph="..." />
           </folding>
         </state>
       </provider>
