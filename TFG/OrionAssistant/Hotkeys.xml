@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data version="1" size="26">
+    <hotkey type="3" action="4294967295" running_mode="true" key="115" modifiers="0" name="" external_code="Orion.Say('.recall 1,1');"/>
+    <hotkey type="3" action="4294967295" running_mode="true" key="112" modifiers="0" name="" external_code="Orion.Say('.lifeboost');"/>
+    <hotkey type="3" action="4294967295" running_mode="true" key="113" modifiers="0" name="" external_code="Orion.Say('.manaboost');"/>
+    <hotkey type="3" action="4294967295" running_mode="true" key="114" modifiers="0" name="" external_code="Orion.Say('.refilling');"/>
+    <hotkey type="4" action="0" running_mode="false" key="13" modifiers="0" name="" external_code=""/>
+    <hotkey type="16" action="21" running_mode="false" key="77" modifiers="0" name="" external_code=""/>
+    <hotkey type="3" action="4294967295" running_mode="false" key="72" modifiers="0" name="" external_code="Orion.WarMode(false);&#10;Orion.UseSkill('Hiding');"/>
+    <hotkey type="16" action="20" running_mode="false" key="84" modifiers="0" name="" external_code=""/>
+    <hotkey type="16" action="8" running_mode="false" key="68" modifiers="0" name="" external_code=""/>
+    <hotkey type="16" action="22" running_mode="false" key="83" modifiers="0" name="" external_code=""/>
+    <hotkey type="3" action="4294967295" running_mode="true" key="73" modifiers="0" name="" external_code="Orion.Say('.inv')"/>
+    <hotkey type="2" action="4294967295" running_mode="true" key="66" modifiers="0" name="toggleAutoBandage" external_code=""/>
+    <hotkey type="3" action="4294967295" running_mode="false" key="8" modifiers="64" name="" external_code="Orion.UseType('0x13B1', -1, 'backpack');&#10;Orion.Attack(['lasttarget']);"/>
+    <hotkey type="2" action="0" running_mode="true" key="4" modifiers="1" name="FastLoot" external_code=""/>
+    <hotkey type="3" action="4294967295" running_mode="true" key="1" modifiers="1" name="" external_code="Orion.Ignore(self);&#10;var list = Orion.FindType('-1', '-1', ground, 'human|live|fast', '18');&#10;if (list.length == 0) {&#10;  Orion.IgnoreReset();&#10;  Orion.Ignore(self);&#10;  list = Orion.FindType('-1', '-1', ground, 'human|live|fast', '18');&#10;}&#10;if (list.length != 0) {&#10;    Orion.CharPrint(self, 0x13, &quot;[Target: &quot; + Orion.FindObject(list[0]).Name() + &quot;]&quot;)&#10;  Orion.ClientLastTarget(list[0]);&#10;  Orion.Ignore(list[0]);&#10;}"/>
+    <hotkey type="3" action="4294967295" running_mode="true" key="2" modifiers="1" name="" external_code="Orion.Ignore(self);&#10;var list = Orion.FindType('-1', '-1', ground, 'near|mobile|fast', '18');&#10;if (list.length == 0) {&#10;  Orion.IgnoreReset();&#10;  Orion.Ignore(self);&#10;  list = Orion.FindType('-1', '-1', ground, 'near|mobile|fast', '18');&#10;}&#10;if (list.length != 0) {&#10;  Orion.CharPrint(self, 0x13, &quot;[Target: &quot; + Orion.FindObject(list[0]).Name() + &quot;]&quot;);&#10;  Orion.ClientLastTarget(list[0]);&#10;  Orion.Ignore(list[0]);&#10;}&#10;"/>
+    <hotkey type="7" action="0" running_mode="false" key="90" modifiers="0" name="" external_code=""/>
+    <hotkey type="2" action="0" running_mode="false" key="76" modifiers="0" name="toggleAutoLoot" external_code=""/>
+    <hotkey type="8" action="0" running_mode="false" key="65" modifiers="2" name="" external_code="Orion.WarMode(false);&#10;"/>
+    <hotkey type="2" action="4294967295" running_mode="true" key="65" modifiers="0" name="doorAuto" external_code=""/>
+    <hotkey type="3" action="4294967295" running_mode="false" key="80" modifiers="0" name="" external_code="&#10;Orion.MoveItem('0x400E82C5', 30, 'backpack');"/>
+    <hotkey type="3" action="4294967295" running_mode="true" key="123" modifiers="0" name="" external_code="Orion.Cast('Protection', 'self');&#10;Orion.Wait(3000);&#10;Orion.Cast('Reactive Armor', 'self');&#10;Orion.Wait(3000);&#10;Orion.Cast('Agility', 'self');&#10;Orion.Wait(3000);&#10;Orion.Cast('Magic Reflection', 'self');"/>
+    <hotkey type="11" action="5" running_mode="false" key="49" modifiers="0" name="" external_code=""/>
+    <hotkey type="11" action="38" running_mode="false" key="50" modifiers="0" name="" external_code=""/>
+    <hotkey type="3" action="4294967295" running_mode="false" key="51" modifiers="0" name="" external_code="if (Orion.FindType('0x1F5F').length &gt; 0) {&#10;   Orion.WaitTargetObject(Orion.ClientLastTarget());&#10;   Orion.UseType('0x1F5F');&#10;} else {&#10;   Orion.Cast('Flame Strike', Orion.ClientLastTarget());&#10;}"/>
+</data>

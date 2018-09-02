@@ -10,6 +10,7 @@ program BasicTraining;
     TrainHiding,
     TrainItemIdentification, 
     TrainMusicianship,
+    TrainPeacemaking,
     TrainSpiritSpeak,
     TrainStealth,
     TrainTasteIdentification,
@@ -19,14 +20,15 @@ begin
 
     TrainAnatomy;
     //TrainAnimalLore();
-    TrainArmsLore(pickaxeType);
+    TrainArmsLore($1B76);
     TrainDetectingHidden();
     TrainEvaluatingIntelligence();
     TrainHiding();
-    TrainItemIdentification(pickaxeType);
+    TrainItemIdentification($1B76);
     //TrainMusicianship(luteType);
+    TrainPeacemaking($0EB3);
     TrainStealth();
-    //TrainTasteIdentification(oneSausageType);
-    TrainTracking;
+    TrainTasteIdentification($09EA);
+    TrainTracking();
     
 end.

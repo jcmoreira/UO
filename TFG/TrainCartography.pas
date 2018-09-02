@@ -4,14 +4,19 @@ uses
    Constants;
 
 var
-   groundMapRoll : Cardinal;
+   groundMapRoll, trashBarrel : Cardinal;
 
 begin
+
+  trashBarrel := $40027D66;  
+
   while (GetSkillValue('Cartography') < 70.0) and (FindType(mapRollType, Ground) > 0) do
   begin
-	
-	AddToDebugJournal('Found' + IntToStr(FindQuantity) + ' logs nearby');
-	groundMapRoll := FindItem;
+  
+	groundMapRoll := FindItem; 
+    
+    MoveItems(Backpack, scrollsType, $0000, trashBarrel, 0,0,0, 1000);
+    UseObject(trashBarrel);
 
 	while FindType(mapRollType, BackPack) = 0 do
 	begin
@@ -19,20 +24,11 @@ begin
 		Wait(2000);
 	end;
 
-        while (GetSkillValue('Cartography') < 70.0) and (FindType(mapRollType, BackPack) > 0) do
+    while (GetSkillValue('Cartography') < 70.0) and (FindType(mapRollType, BackPack) > 0) do
 	begin	
 		if TargetPresent then CancelTarget;
 		UseObject(FindItem());
-        	WaitJournalLineSystem(Now, 'put|fail', 6000);
-		Wait(200);
-	end;
-
-	while FindType(scrollsType, BackPack) > 0 do
-	begin
-		AddToDebugJournal('Found' + IntToStr(FindQuantity) + ' training maps in the backpack. Droping ...');
-		DropHere(FindItem);
-		Wait(2000);
-		AddToDebugJournal('Training Maps Dropped.');
+        WaitJournalLineSystem(Now, 'put|fail', 6000);
 	end;
   end;
 end.

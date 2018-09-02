@@ -10,9 +10,8 @@ implementation
   begin
     while GetSkillValue('Hiding') < 100.0 do
     begin
-	UOSay('guards');
-        UseSkill('Hiding');
-	WaitJournalLineSystem(Now, 'hide|hidden', 3000);
+      UseSkill('Hiding');
+      WaitJournalLineSystem(Now, 'hide|hidden', 3000);
     end;
   end;
 

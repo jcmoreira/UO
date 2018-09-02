@@ -328,9 +328,10 @@ function autoBandage(){
      while (Orion.Connected() && !Player.Dead()){
         if (Player.Hits() < Player.MaxHits()) {
            Orion.BandageTarget(self);
-           Orion.Wait(1500);
+           Orion.WaitJournal('healed', Orion.Now(), Orion.Now() + 5000);
+           Orion.Wait(4000)
         }
-        Orion.Wait(500);
+        Orion.Wait(100);
      }
      
 }
@@ -427,7 +428,7 @@ function LootItems(corpseSerial, list) {
 		        Orion.MoveItem(list[i], 0, 'lootpack');
 		    } 
 		}
-		Orion.Wait(50);
+		Orion.Wait(1000);
 	}
 
 	return true;

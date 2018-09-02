@@ -71,6 +71,7 @@ interface
     logPileTypes: array of Cardinal;
     gemStoneTypes: array of Cardinal;
     fishTypes: array of Cardinal;
+    treeTileTypes: array of Cardinal;
 
 implementation
 
@@ -100,5 +101,56 @@ initialization
     fishTypes[1] := brownFishType;
     fishTypes[2] := purpleFishType;
     fishTypes[3] := yellowFishType;
+
+    SetLength(treeTileTypes, 40);
+    treeTileTypes[0] := 3274;
+    treeTileTypes[1] := 3275;
+    treeTileTypes[2] := 3277;
+    treeTileTypes[3] := 3280;
+
+    treeTileTypes[4] := 3283;
+    treeTileTypes[5] := 3286;
+    treeTileTypes[6] := 3288;
+    treeTileTypes[7] := 3290;
+
+    treeTileTypes[8] := 3293;
+    treeTileTypes[9] := 3296;
+    treeTileTypes[10] := 3299;
+    treeTileTypes[11] := 3302;
+  
+    treeTileTypes[12] := 3320;
+    treeTileTypes[13] := 3323;
+    treeTileTypes[14] := 3326;
+    treeTileTypes[15] := 3329;
+
+    treeTileTypes[16] := 3393;
+    treeTileTypes[17] := 3394;
+    treeTileTypes[18] := 3395;
+    treeTileTypes[19] := 3396;
+
+    treeTileTypes[20] := 3415;
+    treeTileTypes[21] := 3416;
+    treeTileTypes[22] := 3417;
+    treeTileTypes[23] := 3418;
+
+    treeTileTypes[24] := 3419;
+    treeTileTypes[25] := 3438;
+    treeTileTypes[26] := 3439;
+    treeTileTypes[27] := 3440;
+
+    treeTileTypes[28] := 3441;
+    treeTileTypes[29] := 3442;
+    treeTileTypes[30] := 3460;
+    treeTileTypes[31] := 3461;
+
+    treeTileTypes[32] := 3462;
+    treeTileTypes[33] := 3476;
+    treeTileTypes[34] := 3478;
+    treeTileTypes[35] := 3480;
+
+    treeTileTypes[36] := 3482;
+    treeTileTypes[37] := 3484;
+    treeTileTypes[38] := 3492;
+    treeTileTypes[39] := 3496;
   end;
 end.
