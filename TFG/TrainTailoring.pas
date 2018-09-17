@@ -3,14 +3,18 @@ program TrainTailoring;
 uses
     Constants;
 var
-  groundCloth : Cardinal;
+  groundCloth, storageContainer : Cardinal;
 begin
 
-  while (GetSkillValue('Tailoring') < 70.0) and (FindType(foldedClothType, Ground) > 0) do
-  begin
+  storageContainer := $400B574D;
 
-    AddToDebugJournal('Found ' + IntToStr(FindQuantity) + ' logs nearby.');
-    groundCloth := FindItem;
+  while (GetSkillValue('Tailoring') < 70.0) and (FindType(foldedClothType, Ground) > 0) do
+  begin                    
+  
+    groundCloth := FindItem;                                                            
+    
+    MoveItems(Backpack, clothBoxType, clothBoxColor, storageContainer, 0,0,0, 1000);
+    
     while (FindType(foldedClothType, BackPack) = 0) or (FindQuantity() < 5) do
     begin
       MoveItem(groundCloth, 1000, BackPack, 0, 0, 0);
@@ -25,14 +29,6 @@ begin
         WaitMenu('Cloth', 'Cloth Box');
         WaitJournalLineSystem(Now, 'put', 10000);
         wait(200);
-    end;
-
-    while FindTypeEx(clothBoxType, clothBoxColor, BackPack, false) > 0 do
-    begin
-      AddToDebugJournal('Found ' + IntToStr(FindQuantity) + ' in the backpack. Droping ...');
-      DropHere(FindItem);
-      Wait(2000);
-      AddToDebugJournal('Scrolls dropped.');
     end;
   end;
 end.

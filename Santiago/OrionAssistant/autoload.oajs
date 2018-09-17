@@ -386,7 +386,7 @@ function lootCorpse(corpseSerial) {
       checkLootPack();
       Orion.UseObject(corpseSerial);
       Orion.UseIgnoreList('lootIgnore');
-      var timer = Orion.Now() + 300;
+      var timer = Orion.Now() + 500;
       while (!Orion.FindType('-1', '-1', corpseSerial).length && timer > Orion.Now())
          Orion.Wait(50);
 
@@ -428,7 +428,7 @@ function LootItems(corpseSerial, list) {
 		        Orion.MoveItem(list[i], 0, 'lootpack');
 		    } 
 		}
-		Orion.Wait(1000);
+		Orion.Wait(1200);
 	}
 
 	return true;
